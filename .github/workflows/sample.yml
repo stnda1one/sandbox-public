@@ -1,0 +1,13 @@
+name: sample
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run App
+        run: |
+          echo {}
