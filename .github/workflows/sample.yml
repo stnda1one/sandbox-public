@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Run App
         run: |
-          echo {}
+          echo 'mut {  c0: cre_rle(inpt: {name: "test"}) {id}}'
