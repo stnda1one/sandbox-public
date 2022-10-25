@@ -1,0 +1,5 @@
+mutn {
+{{- range $i, $v := .}}
+  c{{$i}}: cre_re(int: {name: "{{$v}}"}) {id}
+{{- end}}
+}

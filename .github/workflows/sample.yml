@@ -8,6 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout App
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          path: ./sandbox-public
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.18
       - name: Run App
         run: |
-          echo 'mut {  c0: cre_rle(inpt: {name: "test"}) {id}}'
+          cd ./sandbox-public/go
+          go run main.go
