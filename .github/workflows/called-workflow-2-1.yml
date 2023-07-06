@@ -1,0 +1,25 @@
+name: third level called workflow 1
+
+on:
+  workflow_call:
+    inputs:
+      target:
+        required: true
+        type: string
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use a repo or org secret from the calling workflow.
+        run: |
+          echo ${{ secrets.HOGE }}
+          echo ${{ inputs.target }}
+
+  job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use a repo or org secret from the calling workflow.
+        run: |
+          echo ${{ secrets.HOGE }}
+          echo ${{ inputs.target }}

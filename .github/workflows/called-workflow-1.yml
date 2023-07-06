@@ -1,0 +1,21 @@
+name: second level called workflow
+
+on:
+  workflow_call:
+    inputs:
+      target:
+        required: true
+        type: string
+
+jobs:
+  job_1:
+    uses: ./.github/workflows/called-wokflow-2-1.yml@main
+    with:
+      target: ${{ inputs.target }}
+    secrets: inherit
+
+  job_2:
+    uses: ./.github/workflows/called-wokflow-2-2.yml@main
+    with:
+      target: ${{ inputs.target }}
+    secrets: inherit
