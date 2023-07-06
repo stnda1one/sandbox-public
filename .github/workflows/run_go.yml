@@ -1,4 +1,4 @@
-name: sample
+name: run go
 
 on:
   workflow_dispatch:
