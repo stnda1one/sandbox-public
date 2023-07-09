@@ -1,6 +1,7 @@
 name: second level called workflow
 
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       target:
