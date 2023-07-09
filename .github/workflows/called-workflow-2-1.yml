@@ -1,6 +1,7 @@
 name: third level called workflow 1
 
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       target:
