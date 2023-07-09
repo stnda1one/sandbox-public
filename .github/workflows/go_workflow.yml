@@ -1,4 +1,4 @@
-name: run go
+name: go workflow
 
 on:
   workflow_dispatch:
