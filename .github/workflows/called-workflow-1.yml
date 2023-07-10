@@ -10,13 +10,13 @@ on:
 
 jobs:
   job_1:
-    uses: ./.github/workflows/called-wokflow-2-1.yml
+    uses: ./.github/workflows/called-workflow-2-1.yml
     with:
       target: ${{ inputs.target }}
     secrets: inherit
 
   job_2:
-    uses: ./.github/workflows/called-wokflow-2-2.yml
+    uses: ./.github/workflows/called-workflow-2-2.yml
     with:
       target: ${{ inputs.target }}
     secrets: inherit
