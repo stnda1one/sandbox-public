@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         target: [1, 2, 3, 4]
-    uses: ./.github/workflows/called-wokflow-1.yml@main
+    uses: ./.github/workflows/called-workflow-1.yml@main
     with:
       target: ${{ matrix.target }}
     secrets: inherit
