@@ -7,8 +7,6 @@ on:
       target:
         required: true
         type: string
-      environment:
-        type: environment
 
 jobs:
   job_1:
