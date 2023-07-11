@@ -2,9 +2,6 @@ name: top level caller workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-          type: environment
           
 jobs:
   example_matrix:
