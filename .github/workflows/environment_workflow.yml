@@ -1,0 +1,29 @@
+name: environment_workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job_sbx_1:
+    runs-on: ubuntu-latest
+    environment:
+      name: sbx_1
+      url: https://yahoo.co.jp
+    steps:
+      - run: echo deploy sbx_1
+  
+  job_sbx_2:
+    runs-on: ubuntu-latest
+    environment:
+      name: sbx_2
+      url: https://google.com
+    steps:
+      - run: echo deploy sbx_2
+
+  job_sbx_3:
+    runs-on: ubuntu-latest
+    environment:
+      name: sbx_3
+      url: https://search.goo.ne.jp
+    steps:
+      - run: echo deploy sbx_３
