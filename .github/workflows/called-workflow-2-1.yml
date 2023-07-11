@@ -2,6 +2,10 @@ name: third level called workflow 1
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: string
   workflow_call:
     inputs:
       target:
@@ -11,7 +15,7 @@ on:
 jobs:
   job_1:
     runs-on: ubuntu-latest
-    environment: sbx_1
+    environment: ${{ inputs.environment }}
     steps:
       - name: Use a repo or org secret from the calling workflow.
         run: |
@@ -20,7 +24,7 @@ jobs:
 
   job_2:
     runs-on: ubuntu-latest
-    environment: sbx_3
+    environment: ${{ inputs.environment }}
     steps:
       - name: Use a repo or org secret from the calling workflow.
         run: |
