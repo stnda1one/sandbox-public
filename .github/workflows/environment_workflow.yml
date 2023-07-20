@@ -2,9 +2,10 @@ name: environment_workflow
 
 on:
   workflow_dispatch:
-    env: 
-      required: true
-      type: environment
+    inputs:
+      env: 
+        required: true
+        type: environment
 
 env:
   ENV_URL: https://${{ github.event.inputs.environment }}.co.jp
