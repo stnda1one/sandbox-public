@@ -10,9 +10,11 @@ on:
 
 env:
   ENV_URL: |-
-    environment == sbx_1 -> https://sbx_1.api.example.com
-    environment == sbx_2 -> https://sbx_2.api.example.com
-    environment == sbx_3 -> https://sbx_3.example.com
+    ${{ fromJSON('{
+      "sbx_1": "https://sbx_1.api.example.com",
+      "sbx_2": "https://sbx_2.api.example.com",
+      "sbx_3": "https://sbx_3.example.com"
+    }')[github.event.inputs.environment] }}
 
 jobs:
   job_sbx_1:
