@@ -3,12 +3,16 @@ name: environment_workflow
 on:
   workflow_dispatch:
     inputs:
-      env: 
+      environment: 
+        description: デプロイする環境
         required: true
         type: environment
 
 env:
-  ENV_URL: https://${{ github.event.inputs.environment }}.co.jp
+  ENV_URL: |-
+    environment == sbx_1 -> https://sbx_1.api.example.com
+    environment == sbx_2 -> https://sbx_2.api.example.com
+    environment == sbx_3 -> https://sbx_3.example.com
 
 jobs:
   job_sbx_1:
@@ -38,7 +42,7 @@ jobs:
   job_sbx_custom:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event.inputs.env }}
+      name: ${{ github.event.inputs.environment }}
       url: ${{ env.ENV_URL }}
     steps:
       - run: echo deploy sbx custom
