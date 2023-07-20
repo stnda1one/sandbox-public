@@ -2,6 +2,12 @@ name: environment_workflow
 
 on:
   workflow_dispatch:
+    env: 
+      required: true
+      type: environment
+
+env:
+  ENV_URL: https://${{ github.event.inputs.environment }}.co.jp
 
 jobs:
   job_sbx_1:
@@ -27,3 +33,11 @@ jobs:
       url: https://search.goo.ne.jp
     steps:
       - run: echo deploy sbx_３
+
+  job_sbx_custom:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.env }}
+      url: ${{ env.ENV_URL }}
+    steps:
+      - run: echo deploy sbx custom
