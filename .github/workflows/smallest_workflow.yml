@@ -1,1 +1,4 @@
 name: smallest workflow
+
+on:
+  workflow_dispatch:
