@@ -48,3 +48,9 @@ jobs:
       url: ${{ env.ENV_URL }}
     steps:
       - run: echo deploy sbx custom
+
+  job_after_job_sbx_custom:
+    runs-on: ubuntu-latest
+    needs: job_sbx_custom
+    steps:
+      - run: echo deploy after job_sbx_custom
