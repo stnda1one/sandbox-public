@@ -22,9 +22,9 @@ env:
         "sbx_2": "{1}",
         "sbx_3": "{2}"
       }}',
-      secrets.HOGE,
-      secrets.FUGA,
-      secrets.HOGE)
+      "sbx_1_secret",
+      "sbx_2_secret",
+      "sbx_3_secret")
     )[github.event.inputs.environment] }}
 
 jobs:
