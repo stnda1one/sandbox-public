@@ -23,8 +23,9 @@ env:
           "sbx_2": "{1}",
           "sbx_3": "{2}"
         }}',
-        'test',
-        secrets.HOGE
+        'test_1',
+        secrets.HOGE,
+        'test_3'
       )
     )[github.event.inputs.environment] || 'https://dev.api.example.com' }}
 
