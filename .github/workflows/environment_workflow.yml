@@ -15,19 +15,28 @@ env:
       "sbx_2": "https://sbx_2.api.example.com",
       "sbx_3": "https://sbx_3.example.com"
     }')[github.event.inputs.environment] }}
-  ENV_SECRET: |-
+  ENV_URL_2: |-
     ${{ fromJSON(
-      format('{{
-        "sbx_1": "{0}",
-        "sbx_2": "{1}",
-        "sbx_3": "{2}"
-      }}',
-      "sbx_1_secret",
-      "sbx_2_secret",
-      "sbx_3_secret")
-    )[github.event.inputs.environment] }}
+      format(
+        '{{
+          "sbx_1": "{0}",
+          "sbx_2": "{1}",
+          "sbx_3": "{2}"
+        }}',
+        env.ENV_URL,
+        secrets.HOGE
+      )
+    )[github.event.inputs.environment] || 'https://dev.api.example.com' }}
 
 jobs:
+  job_sbx_0:
+    runs-on: ubuntu-latest
+    environment:
+      name: sbx_1
+      url: https://yahoo.co.jp
+    steps:
+      - run: echo ${{ env.ENV_URL_2 }}
+      
   job_sbx_1:
     runs-on: ubuntu-latest
     environment:
