@@ -2,6 +2,10 @@ name: third level called workflow 2
 
 on:
   workflow_dispatch:
+    inputs:
+      target:
+        required: true
+        type: string
   workflow_call:
     inputs:
       target:
@@ -26,3 +30,15 @@ jobs:
         run: |
           echo ${{ secrets.HOGE }}
           echo ${{ inputs.target }}
+          
+  job_3:
+    runs-on: ubuntu-latest
+    environment: sbx_2
+    env:
+      ENV_TARGET: ${{ inputs.target }}
+    steps:
+      - name: Use a repo or org secret from the calling workflow.
+        run: |
+          echo "HOGE=${{ secrets.HOGE }}"
+          echo "INPUT_TARGET=${{ inputs.target }}"
+          echo "ENV_TARGET=${{ ENV_TARGET }}"
