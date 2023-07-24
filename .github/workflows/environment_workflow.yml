@@ -15,7 +15,6 @@ env:
       "sbx_2": "https://sbx_2.api.example.com",
       "sbx_3": "https://sbx_3.example.com"
     }')[github.event.inputs.environment] }}
-  STAGING_API_ORIGIN: https://stg-api.example.com
   ENV_URL_2: |-
     ${{ fromJSON(
       format(
@@ -24,7 +23,7 @@ env:
           "sbx_2": "{1}",
           "sbx_3": "{2}"
         }}',
-        env.STAGING_API_ORIGIN,
+        'test',
         secrets.HOGE
       )
     )[github.event.inputs.environment] || 'https://dev.api.example.com' }}
