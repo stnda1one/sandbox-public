@@ -24,7 +24,7 @@ env:
       }}',
       secrets.HOGE,
       secrets.FUGA,
-      secrets.HOGE
+      secrets.HOGE)
     )[github.event.inputs.environment] }}
 
 jobs:
