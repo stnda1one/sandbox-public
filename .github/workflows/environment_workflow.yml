@@ -15,6 +15,12 @@ env:
       "sbx_2": "https://sbx_2.api.example.com",
       "sbx_3": "https://sbx_3.example.com"
     }')[github.event.inputs.environment] }}
+  ENV_SECRET: |-
+    ${{ fromJSON('{
+      "sbx_1": ${{ secrets.HOGE }},
+      "sbx_2": ${{ secrets.FUGA }},
+      "sbx_3": ${{ secrets.HOGE }}
+    }')[github.event.inputs.environment] }}
 
 jobs:
   job_sbx_1:
