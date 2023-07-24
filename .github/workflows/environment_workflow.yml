@@ -24,7 +24,7 @@ env:
           "sbx_2": "{1}",
           "sbx_3": "{2}"
         }}',
-        env.  STAGING_API_ORIGIN,
+        env.STAGING_API_ORIGIN,
         secrets.HOGE
       )
     )[github.event.inputs.environment] || 'https://dev.api.example.com' }}
