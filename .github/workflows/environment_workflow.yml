@@ -17,9 +17,9 @@ env:
     }')[github.event.inputs.environment] }}
   ENV_SECRET: |-
     ${{ fromJSON('{
-      "sbx_1": ${{ secrets.HOGE }},
-      "sbx_2": ${{ secrets.FUGA }},
-      "sbx_3": ${{ secrets.HOGE }}
+      "sbx_1": secrets.HOGE,
+      "sbx_2": secrets.FUGA,
+      "sbx_3": secrets.HOGE
     }')[github.event.inputs.environment] }}
 
 jobs:
