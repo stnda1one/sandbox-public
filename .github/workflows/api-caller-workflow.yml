@@ -21,7 +21,7 @@ jobs:
         id: call-other-workflow
         run: |
           # res=$(curl \
-          "  -sS \
+          #  -sS \
           #  -X POST \
           #  -w '\n%{http_code}' \
           #  -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
