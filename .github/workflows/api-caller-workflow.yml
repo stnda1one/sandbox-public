@@ -6,7 +6,7 @@ on:
       branch:
         description: ブランチ名
         required: true
-        default: devalop
+        default: main
         type: string
 
 jobs:
@@ -20,5 +20,5 @@ jobs:
             -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches \
-            -d '{"ref":${{ inputs.branch }}, "inputs": { "environment": "sbx_1" } }')
+            -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "sbx_1" } }')
           echo $res
