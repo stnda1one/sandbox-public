@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        environment: [sbx_1, sbx_2]
+        environment: [sbx_1]
     steps:
       - name: Call other workflow
         id: call-other-workflow
@@ -30,7 +30,9 @@ jobs:
           res=$(curl -X POST -w '\n%{http_code}' -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' -H "Accept: application/vnd.github.v3+json" -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }' \
             https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches)
           # echo "::set-output name=value::${res}"
-          echo "value=${res}" >> $GITHUB_OUTPUT
+          echo $res
+          echo $res
+          echo "value=${res}" >> "$GITHUB_OUTPUT"
       - name: Set http_code
         id: set-http_code
         run: |
