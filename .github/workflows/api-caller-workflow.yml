@@ -27,12 +27,12 @@ jobs:
           #  -H "Accept: application/vnd.github.v3+json" \
           #  https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches \
           #  -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }')
-          res=$(curl -X POST -w '\n%{http_code}' -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' -H "Accept: application/vnd.github.v3+json" -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }' \
+          http_code=$(curl -X POST -w '\n%{http_code}' -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' -H "Accept: application/vnd.github.v3+json" -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }' \
             https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches  | tail -n 1)
-          # echo "::set-output name=http_code::${res}"
-          echo "http_code=${res}" >> $GITHUB_OUTPUT
+          # echo "::set-output name=http_code::${http_code}"
+          echo "http_code=${http_code}" >> $GITHUB_OUTPUT
       - name: Exit if HTTP status code is NOT 204
-        if: ${{ steps.call-other-workflow.outputs.http_code != '204' }}
+        if: ${{ steps.call-other-workflow.outputs.http_code != '203' }}
         run: |
           echo "${{ steps.call-other-workflow.outputs.http_code }}"
           exit 1
