@@ -32,7 +32,7 @@ jobs:
           # echo "::set-output name=http_code::${http_code}"
           echo "http_code=${http_code}" >> $GITHUB_OUTPUT
       - name: Exit if HTTP status code is NOT 204
-        if: ${{ steps.call-other-workflow.outputs.http_code != '203' }}
+        if: ${{ steps.call-other-workflow.outputs.http_code != '204' }}
         run: |
-          echo "${{ steps.call-other-workflow.outputs.http_code }}"
+          echo "http_code=${{ steps.call-other-workflow.outputs.http_code }}"
           exit 1
