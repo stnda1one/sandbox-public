@@ -32,7 +32,7 @@ jobs:
           # echo "::set-output name=value::${res}"
           echo $res
           echo $res
-          echo "value=${res}" >> "$GITHUB_OUTPUT"
+          echo "value=\"${res}\"" >> $GITHUB_OUTPUT
       - name: Set http_code
         id: set-http_code
         run: |
