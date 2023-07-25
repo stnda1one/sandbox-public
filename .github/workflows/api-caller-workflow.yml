@@ -19,10 +19,12 @@ jobs:
     steps:
       - name: Call other workflow
         run: |
-          res=$(curl \
-            -X POST \
-            -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches \
-            -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }')
+          # res=$(curl \
+          #  -X POST \
+          #  -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
+          #  -H "Accept: application/vnd.github.v3+json" \
+          #  https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches \
+          #  -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }')
+          res=$(curl -X POST -w '\n%{http_code}' -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' -H "Accept: application/vnd.github.v3+json" -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }' \
+            https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches)
           echo $res
