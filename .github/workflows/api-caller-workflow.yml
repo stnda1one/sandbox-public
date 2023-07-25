@@ -12,6 +12,8 @@ on:
 jobs:
   call_other_workflow:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     strategy:
       fail-fast: false
       matrix:
