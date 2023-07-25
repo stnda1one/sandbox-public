@@ -12,6 +12,10 @@ on:
 jobs:
   call_other_workflow:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        environment: [sbx_1, sbx_2]
     steps:
       - name: Call other workflow
         run: |
@@ -20,5 +24,5 @@ jobs:
             -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/stnda1one/sandbox-public/actions/workflows/environment_workflow.yml/dispatches \
-            -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "sbx_1" } }')
+            -d '{"ref":"${{ inputs.branch }}", "inputs": { "environment": "${{ matrix.environment }}" } }')
           echo $res
